@@ -34,80 +34,353 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <ReasonItem>
               <ReasonIcon>🎯</ReasonIcon>
               <ReasonText>
-                <strong>일관성 확보:</strong> 디자이너와 개발자가 동일한 디자인 토큰을 기반으로 소통하고 작업할 수 있도록
+                <strong>일관성 확보:</strong> 디자이너와 개발자가 동일한 디자인
+                토큰을 기반으로 소통하고 작업할 수 있도록
               </ReasonText>
             </ReasonItem>
             <ReasonItem>
               <ReasonIcon>🚀</ReasonIcon>
               <ReasonText>
-                <strong>생산성 향상:</strong> 매번 스타일을 고민하지 않고, 정의된 토큰 안에서 빠르게 선택
+                <strong>생산성 향상:</strong> 매번 스타일을 고민하지 않고,
+                정의된 토큰 안에서 빠르게 선택
               </ReasonText>
             </ReasonItem>
             <ReasonItem>
               <ReasonIcon>📚</ReasonIcon>
               <ReasonText>
-                <strong>살아있는 문서:</strong> 코드와 문서가 분리되지 않는 실시간 인터랙티브 가이드 제공
+                <strong>살아있는 문서:</strong> 코드와 문서가 분리되지 않는
+                실시간 인터랙티브 가이드 제공
               </ReasonText>
             </ReasonItem>
             <ReasonItem>
               <ReasonIcon>🎨</ReasonIcon>
               <ReasonText>
-                <strong>디자인 시스템 체험:</strong> 실제 컴포넌트를 만지고 조합하며 디자인 시스템을 이해
+                <strong>디자인 시스템 체험:</strong> 실제 컴포넌트를 만지고
+                조합하며 디자인 시스템을 이해
               </ReasonText>
             </ReasonItem>
           </ReasonList>
         </SectionContent>
       </Section>
 
-      {/* 각 메뉴별 설명 */}
+      {/* 메뉴 가이드 */}
       <Section>
         <SectionTitle>🗂️ 메뉴 가이드</SectionTitle>
-        <Features>
-          <FeatureCard onClick={() => onNavigate("/button")}>
-            <FeatureIcon>🔘</FeatureIcon>
-            <FeatureTitle>Button</FeatureTitle>
-            <FeatureDescription>
-              Variant, Size, Shape, Interaction 옵션을 조합하여 버튼 디자인 탐색
-            </FeatureDescription>
-            <FeatureTag>인터랙티브 컴포넌트</FeatureTag>
-          </FeatureCard>
+        
+        {/* Design Tokens */}
+        <MenuCategory>
+          <CategoryTitle>🎨 Design Tokens</CategoryTitle>
+          <CategoryDescription>
+            디자인 시스템의 기본 단위인 토큰들을 시각적으로 탐색하고 선택할 수 있습니다.
+          </CategoryDescription>
+          <Features>
+            <FeatureCard onClick={() => onNavigate("/tokens/color")}>
+              <FeatureIcon>🎨</FeatureIcon>
+              <FeatureTitle>Colors</FeatureTitle>
+              <FeatureDescription>
+                Primary, Success, Warning, Error 등 Semantic Colors와 Gray Scale 전체 팔레트 확인
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
 
-          <FeatureCard onClick={() => onNavigate("/color")}>
-            <FeatureIcon>🎨</FeatureIcon>
-            <FeatureTitle>Colors</FeatureTitle>
-            <FeatureDescription>
-              Semantic Colors와 Gray Scale을 시각적으로 확인하고 선택
-            </FeatureDescription>
-            <FeatureTag>디자인 토큰</FeatureTag>
-          </FeatureCard>
+            <FeatureCard onClick={() => onNavigate("/tokens/typography")}>
+              <FeatureIcon>📝</FeatureIcon>
+              <FeatureTitle>Typography</FeatureTitle>
+              <FeatureDescription>
+                Font Size, Weight, Line Height 조합으로 타이포그래피 시스템 탐색
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
 
-          <FeatureCard onClick={() => onNavigate("/typography")}>
-            <FeatureIcon>📝</FeatureIcon>
-            <FeatureTitle>Typography</FeatureTitle>
-            <FeatureDescription>
-              Font Size, Weight, Line Height 조합으로 타이포그래피 탐색
-            </FeatureDescription>
-            <FeatureTag>디자인 토큰</FeatureTag>
-          </FeatureCard>
+            <FeatureCard onClick={() => onNavigate("/tokens/spacing")}>
+              <FeatureIcon>📏</FeatureIcon>
+              <FeatureTitle>Spacing</FeatureTitle>
+              <FeatureDescription>
+                xs부터 4xl까지 일관된 여백 시스템으로 레이아웃 간격 설정
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
 
-          <FeatureCard onClick={() => onNavigate("/interaction")}>
-            <FeatureIcon>🎬</FeatureIcon>
-            <FeatureTitle>Interaction</FeatureTitle>
-            <FeatureDescription>
-              Duration, Easing, Animation 효과를 실시간으로 체험
-            </FeatureDescription>
-            <FeatureTag>모션 디자인</FeatureTag>
-          </FeatureCard>
+            <FeatureCard onClick={() => onNavigate("/tokens/interaction")}>
+              <FeatureIcon>🎬</FeatureIcon>
+              <FeatureTitle>Interaction</FeatureTitle>
+              <FeatureDescription>
+                Duration, Easing, Animation 효과를 실시간으로 체험하고 선택
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
 
-          <FeatureCard onClick={() => onNavigate("/input")}>
-            <FeatureIcon>✏️</FeatureIcon>
-            <FeatureTitle>Input</FeatureTitle>
-            <FeatureDescription>
-              Headless 구조의 Input 컴포넌트와 다양한 상태 확인
-            </FeatureDescription>
-            <FeatureTag>인터랙티브 컴포넌트</FeatureTag>
-          </FeatureCard>
-        </Features>
+            <FeatureCard onClick={() => onNavigate("/tokens/shadows")}>
+              <FeatureIcon>🌓</FeatureIcon>
+              <FeatureTitle>Shadows</FeatureTitle>
+              <FeatureDescription>
+                sm, md, lg, xl 단계별 그림자 효과로 깊이감과 계층 구조 표현
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/tokens/radii")}>
+              <FeatureIcon>⭕</FeatureIcon>
+              <FeatureTitle>Radii</FeatureTitle>
+              <FeatureDescription>
+                모서리 둥글기 설정으로 컴포넌트의 형태와 느낌 조절
+              </FeatureDescription>
+              <FeatureTag>디자인 토큰</FeatureTag>
+            </FeatureCard>
+          </Features>
+        </MenuCategory>
+
+        {/* Common Components */}
+        <MenuCategory>
+          <CategoryTitle>🧩 Common Components</CategoryTitle>
+          <CategoryDescription>
+            재사용 가능한 공통 컴포넌트들을 실시간으로 테스트하고 Props를 확인할 수 있습니다.
+          </CategoryDescription>
+          <Features>
+            <FeatureCard onClick={() => onNavigate("/components/button")}>
+              <FeatureIcon>🔘</FeatureIcon>
+              <FeatureTitle>Button</FeatureTitle>
+              <FeatureDescription>
+                Variant, Size, Shape 옵션을 조합한 다양한 버튼 스타일
+              </FeatureDescription>
+              <FeatureTag>기본 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/input")}>
+              <FeatureIcon>✏️</FeatureIcon>
+              <FeatureTitle>Input</FeatureTitle>
+              <FeatureDescription>
+                Headless 구조의 기본 입력 필드, 다양한 상태 지원
+              </FeatureDescription>
+              <FeatureTag>기본 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/input-field")}>
+              <FeatureIcon>📝</FeatureIcon>
+              <FeatureTitle>InputField</FeatureTitle>
+              <FeatureDescription>
+                Label, Helper Text, Error Message를 포함한 완성형 입력 필드
+              </FeatureDescription>
+              <FeatureTag>폼 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/textarea")}>
+              <FeatureIcon>📄</FeatureIcon>
+              <FeatureTitle>TextArea</FeatureTitle>
+              <FeatureDescription>
+                여러 줄 텍스트 입력을 위한 확장 가능한 텍스트 영역
+              </FeatureDescription>
+              <FeatureTag>폼 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/checkbox")}>
+              <FeatureIcon>☑️</FeatureIcon>
+              <FeatureTitle>CheckBox</FeatureTitle>
+              <FeatureDescription>
+                단일 또는 다중 선택을 위한 체크박스, Indeterminate 상태 지원
+              </FeatureDescription>
+              <FeatureTag>폼 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/radio")}>
+              <FeatureIcon>🔘</FeatureIcon>
+              <FeatureTitle>Radio</FeatureTitle>
+              <FeatureDescription>
+                그룹 내 단일 선택을 위한 라디오 버튼
+              </FeatureDescription>
+              <FeatureTag>폼 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/toggle")}>
+              <FeatureIcon>🔄</FeatureIcon>
+              <FeatureTitle>Toggle</FeatureTitle>
+              <FeatureDescription>
+                On/Off 상태를 시각적으로 표현하는 토글 스위치
+              </FeatureDescription>
+              <FeatureTag>폼 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/dropdown")}>
+              <FeatureIcon>▼</FeatureIcon>
+              <FeatureTitle>DropDown</FeatureTitle>
+              <FeatureDescription>
+                옵션 목록을 펼쳐서 선택할 수 있는 드롭다운 메뉴
+              </FeatureDescription>
+              <FeatureTag>선택 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/search-dropdown")}>
+              <FeatureIcon>🔍</FeatureIcon>
+              <FeatureTitle>SearchDropdown</FeatureTitle>
+              <FeatureDescription>
+                검색 기능이 포함된 드롭다운, 많은 옵션 중 빠른 선택
+              </FeatureDescription>
+              <FeatureTag>선택 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/select")}>
+              <FeatureIcon>📋</FeatureIcon>
+              <FeatureTitle>Select</FeatureTitle>
+              <FeatureDescription>
+                네이티브 스타일 또는 커스텀 스타일의 선택 박스
+              </FeatureDescription>
+              <FeatureTag>선택 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/date-select")}>
+              <FeatureIcon>📅</FeatureIcon>
+              <FeatureTitle>DateSelect</FeatureTitle>
+              <FeatureDescription>
+                날짜 선택을 위한 캘린더 인터페이스, 범위 선택 지원
+              </FeatureDescription>
+              <FeatureTag>선택 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/search-bar")}>
+              <FeatureIcon>🔍</FeatureIcon>
+              <FeatureTitle>SearchBar</FeatureTitle>
+              <FeatureDescription>
+                자동완성, 최근 검색어 등 고급 검색 기능 포함
+              </FeatureDescription>
+              <FeatureTag>검색 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/card")}>
+              <FeatureIcon>🃏</FeatureIcon>
+              <FeatureTitle>Card</FeatureTitle>
+              <FeatureDescription>
+                콘텐츠를 그룹화하는 카드 컨테이너, 다양한 레이아웃 지원
+              </FeatureDescription>
+              <FeatureTag>레이아웃 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/modal")}>
+              <FeatureIcon>🪟</FeatureIcon>
+              <FeatureTitle>Modal</FeatureTitle>
+              <FeatureDescription>
+                중요한 정보나 액션을 위한 오버레이 다이얼로그
+              </FeatureDescription>
+              <FeatureTag>오버레이 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/toast")}>
+              <FeatureIcon>🔔</FeatureIcon>
+              <FeatureTitle>Toast</FeatureTitle>
+              <FeatureDescription>
+                성공, 오류, 정보 등을 알리는 일시적인 알림 메시지
+              </FeatureDescription>
+              <FeatureTag>피드백 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/tooltip")}>
+              <FeatureIcon>💬</FeatureIcon>
+              <FeatureTitle>Tooltip</FeatureTitle>
+              <FeatureDescription>
+                요소에 마우스를 올렸을 때 나타나는 간단한 설명 팝업
+              </FeatureDescription>
+              <FeatureTag>피드백 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/loading")}>
+              <FeatureIcon>⏳</FeatureIcon>
+              <FeatureTitle>Loading</FeatureTitle>
+              <FeatureDescription>
+                데이터 로딩 중임을 표시하는 스피너, 스켈레톤 UI
+              </FeatureDescription>
+              <FeatureTag>피드백 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/pagination")}>
+              <FeatureIcon>📖</FeatureIcon>
+              <FeatureTitle>Pagination</FeatureTitle>
+              <FeatureDescription>
+                많은 데이터를 페이지 단위로 나누어 탐색하는 네비게이션
+              </FeatureDescription>
+              <FeatureTag>네비게이션 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/tab-menu")}>
+              <FeatureIcon>📑</FeatureIcon>
+              <FeatureTitle>TabMenu</FeatureTitle>
+              <FeatureDescription>
+                콘텐츠를 탭으로 구분하여 전환할 수 있는 메뉴
+              </FeatureDescription>
+              <FeatureTag>네비게이션 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/navigation")}>
+              <FeatureIcon>🧭</FeatureIcon>
+              <FeatureTitle>Navigation</FeatureTitle>
+              <FeatureDescription>
+                사이트 전체 구조를 탐색하는 사이드바 또는 헤더 네비게이션
+              </FeatureDescription>
+              <FeatureTag>네비게이션 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/layout")}>
+              <FeatureIcon>📐</FeatureIcon>
+              <FeatureTitle>Layout</FeatureTitle>
+              <FeatureDescription>
+                페이지 전체 구조를 정의하는 레이아웃 컴포넌트
+              </FeatureDescription>
+              <FeatureTag>레이아웃 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/box-select-group")}>
+              <FeatureIcon>☐</FeatureIcon>
+              <FeatureTitle>BoxSelectGroup</FeatureTitle>
+              <FeatureDescription>
+                박스 형태로 시각화된 선택 그룹, 이미지나 아이콘 포함 가능
+              </FeatureDescription>
+              <FeatureTag>선택 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/image-box")}>
+              <FeatureIcon>🖼️</FeatureIcon>
+              <FeatureTitle>ImageBox</FeatureTitle>
+              <FeatureDescription>
+                이미지 표시, 로딩, 에러 처리를 포함한 이미지 컨테이너
+              </FeatureDescription>
+              <FeatureTag>미디어 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/icon-box")}>
+              <FeatureIcon>🎯</FeatureIcon>
+              <FeatureTitle>IconBox</FeatureTitle>
+              <FeatureDescription>
+                아이콘을 일관된 크기와 스타일로 표시하는 컨테이너
+              </FeatureDescription>
+              <FeatureTag>미디어 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/logo")}>
+              <FeatureIcon>🏷️</FeatureIcon>
+              <FeatureTitle>Logo</FeatureTitle>
+              <FeatureDescription>
+                브랜드 로고를 다양한 크기와 변형으로 표시
+              </FeatureDescription>
+              <FeatureTag>미디어 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/video-player")}>
+              <FeatureIcon>▶️</FeatureIcon>
+              <FeatureTitle>VideoPlayer</FeatureTitle>
+              <FeatureDescription>
+                커스텀 컨트롤을 가진 비디오 재생 플레이어
+              </FeatureDescription>
+              <FeatureTag>미디어 컴포넌트</FeatureTag>
+            </FeatureCard>
+
+            <FeatureCard onClick={() => onNavigate("/components/video-container")}>
+              <FeatureIcon>📺</FeatureIcon>
+              <FeatureTitle>VideoContainer</FeatureTitle>
+              <FeatureDescription>
+                반응형 비디오 임베드를 위한 컨테이너, 비율 유지
+              </FeatureDescription>
+              <FeatureTag>미디어 컴포넌트</FeatureTag>
+            </FeatureCard>
+          </Features>
+        </MenuCategory>
       </Section>
 
       {/* 컴포넌트 사용률 산정 */}
@@ -198,20 +471,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <AuthorIcon>👨‍💻</AuthorIcon>
             <AuthorInfo>
               <AuthorName>Created by Heewon</AuthorName>
-              <AuthorRole>Frontend Developer & Design System Architect</AuthorRole>
+              <AuthorRole>
+                Frontend Developer & Design System Architect
+              </AuthorRole>
             </AuthorInfo>
           </AuthorSection>
-          
+
           <Divider />
-          
+
           <CopyrightSection>
             <CopyrightIcon>⚠️</CopyrightIcon>
             <CopyrightText>
               <CopyrightTitle>저작권 안내</CopyrightTitle>
               <CopyrightDescription>
-                본 디자인 시스템의 모든 코드, 디자인 토큰, 컴포넌트는 저작권법의 보호를 받습니다.
+                본 디자인 시스템의 모든 코드, 디자인 토큰, 컴포넌트는 저작권법의
+                보호를 받습니다.
                 <br />
-                무단 복제, 배포, 상업적 이용을 금지하며, 사용 시 반드시 사전 허가를 받아야 합니다.
+                무단 복제, 배포, 상업적 이용을 금지하며, 사용 시 반드시 사전
+                허가를 받아야 합니다.
               </CopyrightDescription>
               <CopyrightNotice>
                 © 2026 Heewon. All rights reserved.
@@ -287,6 +564,30 @@ const SectionTitle = styled.h2`
   ${tokens.typographyPresets.h2};
   color: ${tokens.semanticColors.text.primary};
   margin: 0 0 ${tokens.spacing.xl} 0;
+`;
+
+const MenuCategory = styled.div`
+  margin-bottom: ${tokens.spacing["3xl"]};
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const CategoryTitle = styled.h3`
+  ${tokens.typographyPresets.h3};
+  color: ${tokens.semanticColors.text.primary};
+  margin: 0 0 ${tokens.spacing.sm} 0;
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.sm};
+`;
+
+const CategoryDescription = styled.p`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.secondary};
+  margin: 0 0 ${tokens.spacing.lg} 0;
+  line-height: ${tokens.typography.lineHeight.relaxed};
 `;
 
 const SectionContent = styled.div`
