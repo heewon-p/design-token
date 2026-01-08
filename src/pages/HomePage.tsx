@@ -419,6 +419,128 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         </UsageGrid>
       </Section>
 
+      {/* 프로젝트별 컴포넌트 재사용 현황 */}
+      <Section>
+        <SectionTitle>🔄 프로젝트별 컴포넌트 재사용 현황</SectionTitle>
+        <ProjectReuseDescription>
+          실제 프로젝트에서 공통 컴포넌트가 얼마나 재사용되었는지 확인하세요.
+          공통 컴포넌트 사용으로 절약된 개발 시간과 코드 중복을 측정할 수 있습니다.
+        </ProjectReuseDescription>
+
+        {/* 프로젝트 1 예시 */}
+        <ProjectCard>
+          <ProjectHeader>
+            <ProjectName>🚀 프로젝트 이름</ProjectName>
+            <ProjectPeriod>2024.01 ~ 2024.03</ProjectPeriod>
+          </ProjectHeader>
+
+          <ProjectStats>
+            <StatItem>
+              <StatLabel>사용된 공통 컴포넌트</StatLabel>
+              <StatValue>Button, Input, Card, Modal, Toast</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>총 재사용 횟수</StatLabel>
+              <StatValue>47회</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>공통 컴포넌트 미사용 시 필요 개수</StatLabel>
+              <StatValue>47개</StatValue>
+            </StatItem>
+          </ProjectStats>
+
+          <ReuseRateBar>
+            <ReuseRateLabel>
+              <span>공통 컴포넌트 사용률</span>
+              <ReuseRatePercentage>100%</ReuseRatePercentage>
+            </ReuseRateLabel>
+            <ReuseRateProgress>
+              <ReuseRateFill $percentage={100} />
+            </ReuseRateProgress>
+            <ReuseRateDetail>
+              47개 중 47개를 공통 컴포넌트로 대체 (0개 신규 개발)
+            </ReuseRateDetail>
+          </ReuseRateBar>
+        </ProjectCard>
+
+        {/* 프로젝트 2 예시 */}
+        <ProjectCard>
+          <ProjectHeader>
+            <ProjectName>🚀 프로젝트 이름</ProjectName>
+            <ProjectPeriod>2024.04 ~ 2024.06</ProjectPeriod>
+          </ProjectHeader>
+
+          <ProjectStats>
+            <StatItem>
+              <StatLabel>사용된 공통 컴포넌트</StatLabel>
+              <StatValue>Button, Input, Dropdown</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>총 재사용 횟수</StatLabel>
+              <StatValue>32회</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>공통 컴포넌트 미사용 시 필요 개수</StatLabel>
+              <StatValue>40개</StatValue>
+            </StatItem>
+          </ProjectStats>
+
+          <ReuseRateBar>
+            <ReuseRateLabel>
+              <span>공통 컴포넌트 사용률</span>
+              <ReuseRatePercentage>80%</ReuseRatePercentage>
+            </ReuseRateLabel>
+            <ReuseRateProgress>
+              <ReuseRateFill $percentage={80} />
+            </ReuseRateProgress>
+            <ReuseRateDetail>
+              40개 중 32개를 공통 컴포넌트로 대체 (8개 신규 개발)
+            </ReuseRateDetail>
+          </ReuseRateBar>
+        </ProjectCard>
+
+        {/* 프로젝트 3 예시 - 낮은 사용률 */}
+        <ProjectCard>
+          <ProjectHeader>
+            <ProjectName>🚀 프로젝트 이름</ProjectName>
+            <ProjectPeriod>2024.07 ~ 2024.09</ProjectPeriod>
+          </ProjectHeader>
+
+          <ProjectStats>
+            <StatItem>
+              <StatLabel>사용된 공통 컴포넌트</StatLabel>
+              <StatValue>Button, Input</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>총 재사용 횟수</StatLabel>
+              <StatValue>15회</StatValue>
+            </StatItem>
+            <StatItem>
+              <StatLabel>공통 컴포넌트 미사용 시 필요 개수</StatLabel>
+              <StatValue>30개</StatValue>
+            </StatItem>
+          </ProjectStats>
+
+          <ReuseRateBar>
+            <ReuseRateLabel>
+              <span>공통 컴포넌트 사용률</span>
+              <ReuseRatePercentage>50%</ReuseRatePercentage>
+            </ReuseRateLabel>
+            <ReuseRateProgress>
+              <ReuseRateFill $percentage={50} />
+            </ReuseRateProgress>
+            <ReuseRateDetail>
+              30개 중 15개를 공통 컴포넌트로 대체 (15개 신규 개발)
+            </ReuseRateDetail>
+          </ReuseRateBar>
+        </ProjectCard>
+
+        <ProjectAddGuide>
+          💡 <strong>프로젝트 추가 방법:</strong> 위 양식을 복사하여 프로젝트명, 기간, 
+          사용 컴포넌트, 재사용 횟수, 필요 개수를 입력하고 사용률을 계산하세요.
+        </ProjectAddGuide>
+      </Section>
+
       {/* 핵심 철학 & 목표 */}
       <Philosophy>
         <PhilosophyTitle>🎯 핵심 철학 & 목표</PhilosophyTitle>
@@ -853,6 +975,144 @@ const CopyrightNotice = styled.div`
   color: ${tokens.semanticColors.text.primary};
   font-weight: ${tokens.typography.fontWeight.semibold};
   margin-top: ${tokens.spacing.xs};
+`;
+
+const ProjectReuseDescription = styled.p`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.secondary};
+  margin: 0 0 ${tokens.spacing.xl} 0;
+  line-height: ${tokens.typography.lineHeight.relaxed};
+`;
+
+const ProjectCard = styled.div`
+  background: ${tokens.colors.white};
+  border: 1px solid ${tokens.semanticColors.border.light};
+  border-radius: ${tokens.radii.lg};
+  padding: ${tokens.spacing.xl};
+  margin-bottom: ${tokens.spacing.lg};
+  transition: ${tokens.interaction.transition.normal};
+
+  &:hover {
+    box-shadow: ${tokens.shadows.md};
+    border-color: ${tokens.colors.primary[300]};
+  }
+`;
+
+const ProjectHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${tokens.spacing.lg};
+  padding-bottom: ${tokens.spacing.md};
+  border-bottom: 1px solid ${tokens.semanticColors.border.light};
+`;
+
+const ProjectName = styled.h3`
+  ${tokens.typographyPresets.h3};
+  color: ${tokens.semanticColors.text.primary};
+  margin: 0;
+`;
+
+const ProjectPeriod = styled.span`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  background: ${tokens.colors.gray[100]};
+  padding: ${tokens.spacing.xs} ${tokens.spacing.sm};
+  border-radius: ${tokens.radii.sm};
+`;
+
+const ProjectStats = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.md};
+  margin-bottom: ${tokens.spacing.lg};
+`;
+
+const StatItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.xs};
+`;
+
+const StatLabel = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  font-weight: ${tokens.typography.fontWeight.medium};
+`;
+
+const StatValue = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+`;
+
+const ReuseRateBar = styled.div`
+  background: ${tokens.colors.gray[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  border: 1px solid ${tokens.semanticColors.border.light};
+`;
+
+const ReuseRateLabel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: ${tokens.spacing.sm};
+  
+  span {
+    ${tokens.typographyPresets.body};
+    color: ${tokens.semanticColors.text.primary};
+    font-weight: ${tokens.typography.fontWeight.semibold};
+  }
+`;
+
+const ReuseRatePercentage = styled.div`
+  ${tokens.typographyPresets.h3};
+  color: ${tokens.colors.primary[600]};
+  font-weight: ${tokens.typography.fontWeight.bold};
+`;
+
+const ReuseRateProgress = styled.div`
+  width: 100%;
+  height: 12px;
+  background: ${tokens.colors.gray[200]};
+  border-radius: ${tokens.radii.full};
+  overflow: hidden;
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const ReuseRateFill = styled.div<{ $percentage: number }>`
+  height: 100%;
+  width: ${(props) => props.$percentage}%;
+  background: linear-gradient(
+    90deg,
+    ${tokens.colors.primary[500]} 0%,
+    ${tokens.colors.primary[600]} 100%
+  );
+  transition: width ${tokens.interaction.duration.normal} ${tokens.interaction.easing.easeOut};
+  border-radius: ${tokens.radii.full};
+`;
+
+const ReuseRateDetail = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  text-align: center;
+`;
+
+const ProjectAddGuide = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.secondary};
+  background: ${tokens.colors.primary[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  border-left: 4px solid ${tokens.colors.primary[500]};
+  margin-top: ${tokens.spacing.xl};
+  line-height: ${tokens.typography.lineHeight.relaxed};
+
+  strong {
+    color: ${tokens.semanticColors.text.primary};
+    font-weight: ${tokens.typography.fontWeight.semibold};
+  }
 `;
 
 export default HomePage;
