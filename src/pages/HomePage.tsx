@@ -424,8 +424,61 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <SectionTitle>🔄 프로젝트별 컴포넌트 재사용 현황</SectionTitle>
         <ProjectReuseDescription>
           실제 프로젝트에서 공통 컴포넌트가 얼마나 재사용되었는지 확인하세요.
-          공통 컴포넌트 사용으로 절약된 개발 시간과 코드 중복을 측정할 수 있습니다.
+          공통 컴포넌트 사용으로 절약된 개발 시간과 코드 중복을 측정할 수
+          있습니다.
         </ProjectReuseDescription>
+
+        {/* 전체 통계 요약 */}
+        <OverallStatsGrid>
+          <OverallStatCard>
+            <OverallStatIcon>📊</OverallStatIcon>
+            <OverallStatValue>3개</OverallStatValue>
+            <OverallStatLabel>총 프로젝트 수</OverallStatLabel>
+          </OverallStatCard>
+          <OverallStatCard>
+            <OverallStatIcon>📈</OverallStatIcon>
+            <OverallStatValue>76.7%</OverallStatValue>
+            <OverallStatLabel>평균 재사용률</OverallStatLabel>
+          </OverallStatCard>
+          <OverallStatCard>
+            <OverallStatIcon>⏱️</OverallStatIcon>
+            <OverallStatValue>188시간</OverallStatValue>
+            <OverallStatLabel>총 절약 시간</OverallStatLabel>
+          </OverallStatCard>
+          <OverallStatCard>
+            <OverallStatIcon>🏆</OverallStatIcon>
+            <OverallStatValue>Button</OverallStatValue>
+            <OverallStatLabel>가장 많이 사용 (68회)</OverallStatLabel>
+          </OverallStatCard>
+        </OverallStatsGrid>
+
+        {/* 재사용률 추이 타임라인 */}
+        <TimelineSection>
+          <TimelineTitle>📈 재사용률 추이</TimelineTitle>
+          <TimelineChart>
+            <TimelineItem>
+              <TimelineLabel>2024.Q1</TimelineLabel>
+              <TimelineBarContainer>
+                <TimelineBar $percentage={100} />
+                <TimelinePercentage>100%</TimelinePercentage>
+              </TimelineBarContainer>
+            </TimelineItem>
+            <TimelineItem>
+              <TimelineLabel>2024.Q2</TimelineLabel>
+              <TimelineBarContainer>
+                <TimelineBar $percentage={80} />
+                <TimelinePercentage>80%</TimelinePercentage>
+              </TimelineBarContainer>
+            </TimelineItem>
+            <TimelineItem>
+              <TimelineLabel>2024.Q3</TimelineLabel>
+              <TimelineBarContainer>
+                <TimelineBar $percentage={50} />
+                <TimelinePercentage>50%</TimelinePercentage>
+              </TimelineBarContainer>
+            </TimelineItem>
+          </TimelineChart>
+        </TimelineSection>
 
         {/* 프로젝트 1 예시 */}
         <ProjectCard>
@@ -433,6 +486,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <ProjectName>🚀 프로젝트 이름</ProjectName>
             <ProjectPeriod>2024.01 ~ 2024.03</ProjectPeriod>
           </ProjectHeader>
+
+          <ProjectMeta>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>📂 프로젝트 유형</ProjectMetaLabel>
+              <ProjectMetaValue>관리자 대시보드</ProjectMetaValue>
+            </ProjectMetaItem>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>🏢 클라이언트</ProjectMetaLabel>
+              <ProjectMetaValue>내부 프로젝트</ProjectMetaValue>
+            </ProjectMetaItem>
+          </ProjectMeta>
 
           <ProjectStats>
             <StatItem>
@@ -461,6 +525,74 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               47개 중 47개를 공통 컴포넌트로 대체 (0개 신규 개발)
             </ReuseRateDetail>
           </ReuseRateBar>
+
+          <BenefitsGrid>
+            <BenefitCard>
+              <BenefitIcon>⏱️</BenefitIcon>
+              <BenefitValue>94시간</BenefitValue>
+              <BenefitLabel>절약된 개발 시간</BenefitLabel>
+              <BenefitDetail>컴포넌트당 2시간 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>💰</BenefitIcon>
+              <BenefitValue>₩1,410,000</BenefitValue>
+              <BenefitLabel>예상 비용 절감</BenefitLabel>
+              <BenefitDetail>시간당 ₩15,000 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>📉</BenefitIcon>
+              <BenefitValue>100%</BenefitValue>
+              <BenefitLabel>코드 중복 감소</BenefitLabel>
+              <BenefitDetail>2,350줄 → 0줄</BenefitDetail>
+            </BenefitCard>
+          </BenefitsGrid>
+
+          <TopComponentsSection>
+            <TopComponentsTitle>🏆 가장 많이 사용된 컴포넌트</TopComponentsTitle>
+            <TopComponentsList>
+              <TopComponentItem>
+                <TopComponentRank>1위</TopComponentRank>
+                <TopComponentName>Button</TopComponentName>
+                <TopComponentCount>23회 (48%)</TopComponentCount>
+              </TopComponentItem>
+              <TopComponentItem>
+                <TopComponentRank>2위</TopComponentRank>
+                <TopComponentName>Input</TopComponentName>
+                <TopComponentCount>12회 (26%)</TopComponentCount>
+              </TopComponentItem>
+              <TopComponentItem>
+                <TopComponentRank>3위</TopComponentRank>
+                <TopComponentName>Card</TopComponentName>
+                <TopComponentCount>8회 (17%)</TopComponentCount>
+              </TopComponentItem>
+            </TopComponentsList>
+          </TopComponentsSection>
+
+          <MaintenanceSection>
+            <MaintenanceTitle>🔧 유지보수 효율</MaintenanceTitle>
+            <MaintenanceStats>
+              <MaintenanceStat>
+                <MaintenanceIcon>🐛</MaintenanceIcon>
+                <MaintenanceText>
+                  버그 수정 시 영향받는 파일: <strong>1개</strong> (공통 컴포넌트만)
+                </MaintenanceText>
+              </MaintenanceStat>
+              <MaintenanceStat>
+                <MaintenanceIcon>🎨</MaintenanceIcon>
+                <MaintenanceText>
+                  스타일 변경 시 수정 시간: <strong>5분</strong> (vs 기존 2시간)
+                </MaintenanceText>
+              </MaintenanceStat>
+            </MaintenanceStats>
+          </MaintenanceSection>
+
+          <FeedbackSection>
+            <FeedbackTitle>💬 팀 피드백</FeedbackTitle>
+            <FeedbackQuote>
+              "공통 컴포넌트 덕분에 개발 속도가 2배 빨라졌습니다!"
+            </FeedbackQuote>
+            <FeedbackAuthor>- 개발자 A</FeedbackAuthor>
+          </FeedbackSection>
         </ProjectCard>
 
         {/* 프로젝트 2 예시 */}
@@ -469,6 +601,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <ProjectName>🚀 프로젝트 이름</ProjectName>
             <ProjectPeriod>2024.04 ~ 2024.06</ProjectPeriod>
           </ProjectHeader>
+
+          <ProjectMeta>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>📂 프로젝트 유형</ProjectMetaLabel>
+              <ProjectMetaValue>고객용 웹사이트</ProjectMetaValue>
+            </ProjectMetaItem>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>🏢 클라이언트</ProjectMetaLabel>
+              <ProjectMetaValue>A 회사</ProjectMetaValue>
+            </ProjectMetaItem>
+          </ProjectMeta>
 
           <ProjectStats>
             <StatItem>
@@ -497,6 +640,74 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               40개 중 32개를 공통 컴포넌트로 대체 (8개 신규 개발)
             </ReuseRateDetail>
           </ReuseRateBar>
+
+          <BenefitsGrid>
+            <BenefitCard>
+              <BenefitIcon>⏱️</BenefitIcon>
+              <BenefitValue>64시간</BenefitValue>
+              <BenefitLabel>절약된 개발 시간</BenefitLabel>
+              <BenefitDetail>컴포넌트당 2시간 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>💰</BenefitIcon>
+              <BenefitValue>₩960,000</BenefitValue>
+              <BenefitLabel>예상 비용 절감</BenefitLabel>
+              <BenefitDetail>시간당 ₩15,000 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>📉</BenefitIcon>
+              <BenefitValue>80%</BenefitValue>
+              <BenefitLabel>코드 중복 감소</BenefitLabel>
+              <BenefitDetail>1,600줄 → 320줄</BenefitDetail>
+            </BenefitCard>
+          </BenefitsGrid>
+
+          <TopComponentsSection>
+            <TopComponentsTitle>🏆 가장 많이 사용된 컴포넌트</TopComponentsTitle>
+            <TopComponentsList>
+              <TopComponentItem>
+                <TopComponentRank>1위</TopComponentRank>
+                <TopComponentName>Button</TopComponentName>
+                <TopComponentCount>18회 (56%)</TopComponentCount>
+              </TopComponentItem>
+              <TopComponentItem>
+                <TopComponentRank>2위</TopComponentRank>
+                <TopComponentName>Input</TopComponentName>
+                <TopComponentCount>10회 (31%)</TopComponentCount>
+              </TopComponentItem>
+              <TopComponentItem>
+                <TopComponentRank>3위</TopComponentRank>
+                <TopComponentName>Dropdown</TopComponentName>
+                <TopComponentCount>4회 (13%)</TopComponentCount>
+              </TopComponentItem>
+            </TopComponentsList>
+          </TopComponentsSection>
+
+          <ImprovementSection>
+            <ImprovementTitle>💡 개선 제안</ImprovementTitle>
+            <ImprovementList>
+              <ImprovementItem>
+                <ImprovementIcon>⚠️</ImprovementIcon>
+                <ImprovementText>
+                  신규 개발한 8개 컴포넌트 → 공통화 검토 필요
+                </ImprovementText>
+              </ImprovementItem>
+              <ImprovementItem>
+                <ImprovementIcon>📚</ImprovementIcon>
+                <ImprovementText>
+                  미사용 컴포넌트: Tooltip, Loading, Pagination
+                </ImprovementText>
+              </ImprovementItem>
+            </ImprovementList>
+          </ImprovementSection>
+
+          <FeedbackSection>
+            <FeedbackTitle>💬 팀 피드백</FeedbackTitle>
+            <FeedbackQuote>
+              "일관된 UI로 사용자 경험이 크게 개선되었습니다."
+            </FeedbackQuote>
+            <FeedbackAuthor>- 디자이너 B</FeedbackAuthor>
+          </FeedbackSection>
         </ProjectCard>
 
         {/* 프로젝트 3 예시 - 낮은 사용률 */}
@@ -505,6 +716,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <ProjectName>🚀 프로젝트 이름</ProjectName>
             <ProjectPeriod>2024.07 ~ 2024.09</ProjectPeriod>
           </ProjectHeader>
+
+          <ProjectMeta>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>📂 프로젝트 유형</ProjectMetaLabel>
+              <ProjectMetaValue>모바일 앱</ProjectMetaValue>
+            </ProjectMetaItem>
+            <ProjectMetaItem>
+              <ProjectMetaLabel>🏢 클라이언트</ProjectMetaLabel>
+              <ProjectMetaValue>B 스타트업</ProjectMetaValue>
+            </ProjectMetaItem>
+          </ProjectMeta>
 
           <ProjectStats>
             <StatItem>
@@ -533,11 +755,104 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               30개 중 15개를 공통 컴포넌트로 대체 (15개 신규 개발)
             </ReuseRateDetail>
           </ReuseRateBar>
+
+          <BenefitsGrid>
+            <BenefitCard>
+              <BenefitIcon>⏱️</BenefitIcon>
+              <BenefitValue>30시간</BenefitValue>
+              <BenefitLabel>절약된 개발 시간</BenefitLabel>
+              <BenefitDetail>컴포넌트당 2시간 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>💰</BenefitIcon>
+              <BenefitValue>₩450,000</BenefitValue>
+              <BenefitLabel>예상 비용 절감</BenefitLabel>
+              <BenefitDetail>시간당 ₩15,000 기준</BenefitDetail>
+            </BenefitCard>
+            <BenefitCard>
+              <BenefitIcon>📉</BenefitIcon>
+              <BenefitValue>50%</BenefitValue>
+              <BenefitLabel>코드 중복 감소</BenefitLabel>
+              <BenefitDetail>750줄 → 375줄</BenefitDetail>
+            </BenefitCard>
+          </BenefitsGrid>
+
+          <TopComponentsSection>
+            <TopComponentsTitle>🏆 가장 많이 사용된 컴포넌트</TopComponentsTitle>
+            <TopComponentsList>
+              <TopComponentItem>
+                <TopComponentRank>1위</TopComponentRank>
+                <TopComponentName>Button</TopComponentName>
+                <TopComponentCount>9회 (60%)</TopComponentCount>
+              </TopComponentItem>
+              <TopComponentItem>
+                <TopComponentRank>2위</TopComponentRank>
+                <TopComponentName>Input</TopComponentName>
+                <TopComponentCount>6회 (40%)</TopComponentCount>
+              </TopComponentItem>
+            </TopComponentsList>
+          </TopComponentsSection>
+
+          <ImprovementSection>
+            <ImprovementTitle>💡 개선 제안</ImprovementTitle>
+            <ImprovementList>
+              <ImprovementItem>
+                <ImprovementIcon>🎯</ImprovementIcon>
+                <ImprovementText>
+                  다음 프로젝트 목표: 재사용률 80% 이상 달성
+                </ImprovementText>
+              </ImprovementItem>
+              <ImprovementItem>
+                <ImprovementIcon>📦</ImprovementIcon>
+                <ImprovementText>
+                  신규 개발 15개 컴포넌트 중 10개는 공통화 가능
+                </ImprovementText>
+              </ImprovementItem>
+              <ImprovementItem>
+                <ImprovementIcon>📚</ImprovementIcon>
+                <ImprovementText>
+                  Card, Modal, Toast 등 활용도 높은 컴포넌트 미사용
+                </ImprovementText>
+              </ImprovementItem>
+            </ImprovementList>
+          </ImprovementSection>
+
+          <FeedbackSection>
+            <FeedbackTitle>💬 팀 피드백</FeedbackTitle>
+            <FeedbackQuote>
+              "공통 컴포넌트를 더 적극적으로 활용할 필요가 있습니다."
+            </FeedbackQuote>
+            <FeedbackAuthor>- PM C</FeedbackAuthor>
+          </FeedbackSection>
         </ProjectCard>
 
+        {/* 다음 목표 */}
+        <NextGoalsSection>
+          <NextGoalsTitle>🎯 다음 분기 목표</NextGoalsTitle>
+          <NextGoalsList>
+            <NextGoalItem>
+              <NextGoalIcon>📈</NextGoalIcon>
+              <NextGoalText>재사용률 90% 이상 달성</NextGoalText>
+            </NextGoalItem>
+            <NextGoalItem>
+              <NextGoalIcon>🆕</NextGoalIcon>
+              <NextGoalText>신규 공통 컴포넌트 5개 추가</NextGoalText>
+            </NextGoalItem>
+            <NextGoalItem>
+              <NextGoalIcon>🌐</NextGoalIcon>
+              <NextGoalText>모든 프로젝트에 디자인 시스템 적용</NextGoalText>
+            </NextGoalItem>
+            <NextGoalItem>
+              <NextGoalIcon>📚</NextGoalIcon>
+              <NextGoalText>컴포넌트 문서화 및 가이드 개선</NextGoalText>
+            </NextGoalItem>
+          </NextGoalsList>
+        </NextGoalsSection>
+
         <ProjectAddGuide>
-          💡 <strong>프로젝트 추가 방법:</strong> 위 양식을 복사하여 프로젝트명, 기간, 
-          사용 컴포넌트, 재사용 횟수, 필요 개수를 입력하고 사용률을 계산하세요.
+          💡 <strong>프로젝트 추가 방법:</strong> 위 양식을 복사하여 프로젝트명,
+          기간, 사용 컴포넌트, 재사용 횟수, 필요 개수를 입력하고 사용률을
+          계산하세요. 모든 수치는 실제 프로젝트 데이터를 기반으로 작성하시면 됩니다.
         </ProjectAddGuide>
       </Section>
 
@@ -1058,7 +1373,7 @@ const ReuseRateLabel = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: ${tokens.spacing.sm};
-  
+
   span {
     ${tokens.typographyPresets.body};
     color: ${tokens.semanticColors.text.primary};
@@ -1089,7 +1404,8 @@ const ReuseRateFill = styled.div<{ $percentage: number }>`
     ${tokens.colors.primary[500]} 0%,
     ${tokens.colors.primary[600]} 100%
   );
-  transition: width ${tokens.interaction.duration.normal} ${tokens.interaction.easing.easeOut};
+  transition: width ${tokens.interaction.duration.normal};
+  ${tokens.interaction.easing.easeOut};
   border-radius: ${tokens.radii.full};
 `;
 
@@ -1113,6 +1429,381 @@ const ProjectAddGuide = styled.div`
     color: ${tokens.semanticColors.text.primary};
     font-weight: ${tokens.typography.fontWeight.semibold};
   }
+`;
+
+const OverallStatsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: ${tokens.spacing.lg};
+  margin-bottom: ${tokens.spacing["2xl"]};
+`;
+
+const OverallStatCard = styled.div`
+  background: linear-gradient(135deg, ${tokens.colors.primary[500]} 0%, ${tokens.colors.primary[600]} 100%);
+  padding: ${tokens.spacing.xl};
+  border-radius: ${tokens.radii.lg};
+  text-align: center;
+  color: ${tokens.colors.white};
+  box-shadow: ${tokens.shadows.md};
+  transition: ${tokens.interaction.transition.normal};
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: ${tokens.shadows.lg};
+  }
+`;
+
+const OverallStatIcon = styled.div`
+  font-size: ${tokens.typography.fontSize["3xl"]};
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const OverallStatValue = styled.div`
+  font-size: ${tokens.typography.fontSize["3xl"]};
+  font-weight: ${tokens.typography.fontWeight.bold};
+  margin-bottom: ${tokens.spacing.xs};
+`;
+
+const OverallStatLabel = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  opacity: 0.9;
+`;
+
+const TimelineSection = styled.div`
+  background: ${tokens.colors.white};
+  border: 1px solid ${tokens.semanticColors.border.light};
+  border-radius: ${tokens.radii.lg};
+  padding: ${tokens.spacing.xl};
+  margin-bottom: ${tokens.spacing["2xl"]};
+`;
+
+const TimelineTitle = styled.h3`
+  ${tokens.typographyPresets.h3};
+  color: ${tokens.semanticColors.text.primary};
+  margin: 0 0 ${tokens.spacing.lg} 0;
+`;
+
+const TimelineChart = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.md};
+`;
+
+const TimelineItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.md};
+`;
+
+const TimelineLabel = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+  min-width: 80px;
+`;
+
+const TimelineBarContainer = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.sm};
+`;
+
+const TimelineBar = styled.div<{ $percentage: number }>`
+  height: 24px;
+  width: ${(props) => props.$percentage}%;
+  background: linear-gradient(90deg, ${tokens.colors.primary[400]} 0%, ${tokens.colors.primary[600]} 100%);
+  border-radius: ${tokens.radii.sm};
+  transition: width ${tokens.interaction.duration.normal} ${tokens.interaction.easing.easeOut};
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+`;
+
+const TimelinePercentage = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.bold};
+  min-width: 50px;
+`;
+
+const ProjectMeta = styled.div`
+  display: flex;
+  gap: ${tokens.spacing.lg};
+  margin-bottom: ${tokens.spacing.lg};
+  padding-bottom: ${tokens.spacing.md};
+  border-bottom: 1px solid ${tokens.semanticColors.border.light};
+`;
+
+const ProjectMetaItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.xs};
+`;
+
+const ProjectMetaLabel = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  font-weight: ${tokens.typography.fontWeight.medium};
+`;
+
+const ProjectMetaValue = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+`;
+
+const BenefitsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: ${tokens.spacing.md};
+  margin: ${tokens.spacing.lg} 0;
+`;
+
+const BenefitCard = styled.div`
+  background: ${tokens.colors.gray[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  text-align: center;
+  border: 1px solid ${tokens.semanticColors.border.light};
+`;
+
+const BenefitIcon = styled.div`
+  font-size: ${tokens.typography.fontSize["2xl"]};
+  margin-bottom: ${tokens.spacing.xs};
+`;
+
+const BenefitValue = styled.div`
+  ${tokens.typographyPresets.h4};
+  color: ${tokens.colors.primary[600]};
+  font-weight: ${tokens.typography.fontWeight.bold};
+  margin-bottom: ${tokens.spacing.xs};
+`;
+
+const BenefitLabel = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.medium};
+  margin-bottom: ${tokens.spacing.xs};
+`;
+
+const BenefitDetail = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  font-size: ${tokens.typography.fontSize.xs};
+`;
+
+const TopComponentsSection = styled.div`
+  background: ${tokens.colors.gray[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  margin: ${tokens.spacing.lg} 0;
+`;
+
+const TopComponentsTitle = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const TopComponentsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.sm};
+`;
+
+const TopComponentItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.sm};
+  background: ${tokens.colors.white};
+  padding: ${tokens.spacing.sm};
+  border-radius: ${tokens.radii.sm};
+`;
+
+const TopComponentRank = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.colors.primary[600]};
+  font-weight: ${tokens.typography.fontWeight.bold};
+  min-width: 30px;
+`;
+
+const TopComponentName = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.medium};
+  flex: 1;
+`;
+
+const TopComponentCount = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+`;
+
+const MaintenanceSection = styled.div`
+  background: ${tokens.colors.gray[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  margin: ${tokens.spacing.lg} 0;
+`;
+
+const MaintenanceTitle = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const MaintenanceStats = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.sm};
+`;
+
+const MaintenanceStat = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.sm};
+  background: ${tokens.colors.white};
+  padding: ${tokens.spacing.sm};
+  border-radius: ${tokens.radii.sm};
+`;
+
+const MaintenanceIcon = styled.div`
+  font-size: ${tokens.typography.fontSize.xl};
+`;
+
+const MaintenanceText = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+
+  strong {
+    color: ${tokens.semanticColors.text.primary};
+    font-weight: ${tokens.typography.fontWeight.semibold};
+  }
+`;
+
+const ImprovementSection = styled.div`
+  background: ${tokens.colors.warning[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  margin: ${tokens.spacing.lg} 0;
+  border: 1px solid ${tokens.colors.warning[200]};
+`;
+
+const ImprovementTitle = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const ImprovementList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${tokens.spacing.sm};
+`;
+
+const ImprovementItem = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: ${tokens.spacing.sm};
+`;
+
+const ImprovementIcon = styled.div`
+  font-size: ${tokens.typography.fontSize.lg};
+  flex-shrink: 0;
+`;
+
+const ImprovementText = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  line-height: ${tokens.typography.lineHeight.relaxed};
+`;
+
+const FeedbackSection = styled.div`
+  background: ${tokens.colors.primary[50]};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  margin: ${tokens.spacing.lg} 0 0;
+  border-left: 4px solid ${tokens.colors.primary[500]};
+`;
+
+const FeedbackTitle = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.semibold};
+  margin-bottom: ${tokens.spacing.sm};
+`;
+
+const FeedbackQuote = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.secondary};
+  font-style: italic;
+  margin-bottom: ${tokens.spacing.xs};
+  line-height: ${tokens.typography.lineHeight.relaxed};
+`;
+
+const FeedbackAuthor = styled.div`
+  ${tokens.typographyPresets.bodySmall};
+  color: ${tokens.semanticColors.text.secondary};
+  text-align: right;
+`;
+
+const NextGoalsSection = styled.div`
+  background: linear-gradient(135deg, ${tokens.colors.primary[50]} 0%, ${tokens.colors.primary[100]} 100%);
+  padding: ${tokens.spacing.xl};
+  border-radius: ${tokens.radii.lg};
+  margin-top: ${tokens.spacing["2xl"]};
+  border: 2px solid ${tokens.colors.primary[300]};
+`;
+
+const NextGoalsTitle = styled.h3`
+  ${tokens.typographyPresets.h3};
+  color: ${tokens.semanticColors.text.primary};
+  margin: 0 0 ${tokens.spacing.lg} 0;
+`;
+
+const NextGoalsList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: ${tokens.spacing.md};
+`;
+
+const NextGoalItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.spacing.sm};
+  background: ${tokens.colors.white};
+  padding: ${tokens.spacing.md};
+  border-radius: ${tokens.radii.md};
+  box-shadow: ${tokens.shadows.sm};
+`;
+
+const NextGoalIcon = styled.div`
+  font-size: ${tokens.typography.fontSize["2xl"]};
+  flex-shrink: 0;
+`;
+
+const NextGoalText = styled.div`
+  ${tokens.typographyPresets.body};
+  color: ${tokens.semanticColors.text.primary};
+  font-weight: ${tokens.typography.fontWeight.medium};
 `;
 
 export default HomePage;
