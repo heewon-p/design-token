@@ -50,9 +50,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </FeatureDescription>
         </FeatureCard>
 
-        <FeatureCard onClick={() => onNavigate("/motion")}>
+        <FeatureCard onClick={() => onNavigate("/interaction")}>
           <FeatureIcon>🎬</FeatureIcon>
-          <FeatureTitle>Motion</FeatureTitle>
+          <FeatureTitle>Interaction</FeatureTitle>
           <FeatureDescription>
             Duration, Easing, Animation 효과를 실시간으로 체험
           </FeatureDescription>
@@ -163,7 +163,7 @@ const FeatureCard = styled.button`
   border: 1px solid ${tokens.semanticColors.border.light};
   border-radius: ${tokens.radii.lg};
   cursor: pointer;
-  transition: ${tokens.motion.transition.normal};
+  transition: ${tokens.interaction.transition.normal};
   text-align: left;
   display: flex;
   flex-direction: column;

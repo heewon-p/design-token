@@ -1,5 +1,5 @@
 /**
- * 🎬 Motion & Animation Playground
+ * 🎬 interaction & Animation Playground
  */
 
 import React, { useState } from "react";
@@ -13,7 +13,7 @@ import { Section } from "../common/Section";
 import { RadioOption } from "../common/OptionGroup";
 import OptionGroup from "../common/OptionGroup";
 
-export const MotionPlayground: React.FC = () => {
+export const InteractionPlayground: React.FC = () => {
   const [duration, setDuration] = useState<Duration>("normal");
   const [easing, setEasing] = useState<Easing>("easeOut");
   const [animation, setAnimation] = useState<
@@ -45,7 +45,7 @@ export const MotionPlayground: React.FC = () => {
 
   return (
     <PlaygroundLayout>
-      <OptionPanel title="Motion & Animation">
+      <OptionPanel title="interaction & Animation">
         <Section title="Duration">
           <OptionGroup label="Duration">
             {durationOptions.map((option) => (
@@ -104,7 +104,7 @@ export const MotionPlayground: React.FC = () => {
               <CardTitle>Animated Card</CardTitle>
               <CardText>
                 이 카드는 선택한 animation으로 나타납니다. duration:{" "}
-                {tokens.motion.duration[duration]}, easing: {easing}
+                {tokens.interaction.duration[duration]}, easing: {easing}
               </CardText>
             </AnimatedCard>
           </AnimationBox>
@@ -198,8 +198,8 @@ const AnimatedCard = styled.div<{
   max-width: 400px;
 
   ${(props) => {
-    const duration = tokens.motion.duration[props.$duration];
-    const easing = tokens.motion.easing[props.$easing];
+    const duration = tokens.interaction.duration[props.$duration];
+    const easing = tokens.interaction.easing[props.$easing];
 
     switch (props.$animation) {
       case "fade":
@@ -304,21 +304,21 @@ const BaseButton = styled.button`
 `;
 
 const HoverScaleButton = styled(BaseButton)`
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   &:hover {
     transform: scale(1.1);
   }
 `;
 
 const HoverGlowButton = styled(BaseButton)`
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   &:hover {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
   }
 `;
 
 const HoverLiftButton = styled(BaseButton)`
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   &:hover {
     transform: translateY(-4px);
     box-shadow: ${tokens.shadows.lg};
@@ -326,7 +326,7 @@ const HoverLiftButton = styled(BaseButton)`
 `;
 
 const ActivePressButton = styled(BaseButton)`
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   &:active {
     transform: scale(0.95);
   }
@@ -354,7 +354,7 @@ const EasingBar = styled.div<{ $easing: Easing }>`
   height: 40px;
   background: ${tokens.colors.primary[500]};
   border-radius: ${tokens.radii.sm};
-  animation: slide 2s ${(props) => tokens.motion.easing[props.$easing]};
+  animation: slide 2s ${(props) => tokens.interaction.easing[props.$easing]};
 
   @keyframes slide {
     from {
@@ -366,4 +366,4 @@ const EasingBar = styled.div<{ $easing: Easing }>`
   }
 `;
 
-export default MotionPlayground;
+export default InteractionPlayground;

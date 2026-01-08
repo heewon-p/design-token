@@ -65,7 +65,7 @@ src/
 │   ├── colors.ts           # 컬러 토큰
 │   ├── typography.ts       # 타이포그래피 토큰
 │   ├── spacing.ts          # 간격 토큰
-│   ├── motion.ts           # 애니메이션 토큰
+│   ├── interaction.ts           # 애니메이션 토큰
 │   ├── shadows.ts          # 그림자 토큰
 │   ├── radii.ts            # 모서리 토큰
 │   └── index.ts            # 통합 export
@@ -87,7 +87,7 @@ src/
 │   ├── ButtonPlayground/
 │   ├── ColorPlayground/
 │   ├── TypographyPlayground/
-│   ├── MotionPlayground/
+│   ├── interactionPlayground/
 │   └── InputPlayground/
 │
 ├── layout/
@@ -117,7 +117,7 @@ src/
 - **옵션:** Font Size (xs~2xl), Weight (regular, medium, bold), Line Height (tight~loose)
 - **특징:** 타이포 토큰 구조 제공
 
-### 4. 🎬 Motion Playground
+### 4. 🎬 interaction Playground
 
 - **옵션:** Duration (fast, normal, slow), Easing (linear, easeIn, easeOut 등), Animation (fade, scale, slide)
 - **특징:** 실시간 애니메이션 체험

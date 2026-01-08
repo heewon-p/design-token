@@ -87,7 +87,7 @@ const CopyButton = styled.button`
   border: none;
   border-radius: ${tokens.radii.sm};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   font-weight: ${tokens.typography.fontWeight.medium};
 
   &:hover {

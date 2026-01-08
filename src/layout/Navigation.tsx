@@ -2,7 +2,7 @@
  * 🧭 Navigation
  */
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { tokens } from "../tokens";
 
@@ -11,19 +11,97 @@ interface NavigationProps {
   onNavigate: (path: string) => void;
 }
 
-const navItems = [
-  { path: "/", label: "🏠 Home", icon: "🏠" },
-  { path: "/button", label: "Button", icon: "🔘" },
-  { path: "/color", label: "Colors", icon: "🎨" },
-  { path: "/typography", label: "Typography", icon: "📝" },
-  { path: "/motion", label: "Motion", icon: "🎬" },
-  { path: "/input", label: "Input", icon: "✏️" },
+interface NavItem {
+  path: string;
+  label: string;
+  icon: string;
+  children?: NavItem[];
+}
+
+const navItems: NavItem[] = [
+  {
+    path: "/",
+    label: "Home",
+    icon: "🏠",
+  },
+  {
+    path: "/design-tokens",
+    label: "Design Tokens",
+    icon: "🎨",
+    children: [
+      { path: "/tokens/color", label: "Colors", icon: "🎨" },
+      { path: "/tokens/typography", label: "Typography", icon: "📝" },
+      { path: "/tokens/spacing", label: "Spacing", icon: "📏" },
+      { path: "/tokens/interaction", label: "Interaction", icon: "🎬" },
+      { path: "/tokens/shadows", label: "Shadows", icon: "🌓" },
+      { path: "/tokens/radii", label: "Radii", icon: "⭕" },
+    ],
+  },
+  {
+    path: "/common-components",
+    label: "Common Components",
+    icon: "🧩",
+    children: [
+      { path: "/components/button", label: "Button", icon: "🔘" },
+      { path: "/components/input", label: "Input", icon: "✏️" },
+      { path: "/components/input-field", label: "InputField", icon: "📝" },
+      { path: "/components/textarea", label: "TextArea", icon: "📄" },
+      { path: "/components/checkbox", label: "CheckBox", icon: "☑️" },
+      { path: "/components/radio", label: "Radio", icon: "🔘" },
+      { path: "/components/toggle", label: "Toggle", icon: "🔄" },
+      { path: "/components/dropdown", label: "DropDown", icon: "▼" },
+      {
+        path: "/components/search-dropdown",
+        label: "SearchDropdown",
+        icon: "🔍",
+      },
+      { path: "/components/select", label: "Select", icon: "📋" },
+      { path: "/components/date-select", label: "DateSelect", icon: "📅" },
+      { path: "/components/search-bar", label: "SearchBar", icon: "🔍" },
+      { path: "/components/card", label: "Card", icon: "🃏" },
+      { path: "/components/modal", label: "Modal", icon: "🪟" },
+      { path: "/components/toast", label: "Toast", icon: "🔔" },
+      { path: "/components/tooltip", label: "Tooltip", icon: "💬" },
+      { path: "/components/loading", label: "Loading", icon: "⏳" },
+      { path: "/components/pagination", label: "Pagination", icon: "📖" },
+      { path: "/components/tab-menu", label: "TabMenu", icon: "📑" },
+      { path: "/components/navigation", label: "Navigation", icon: "🧭" },
+      { path: "/components/layout", label: "Layout", icon: "📐" },
+      {
+        path: "/components/box-select-group",
+        label: "BoxSelectGroup",
+        icon: "☐",
+      },
+      { path: "/components/image-box", label: "ImageBox", icon: "🖼️" },
+      { path: "/components/icon-box", label: "IconBox", icon: "🎯" },
+      { path: "/components/logo", label: "Logo", icon: "🏷️" },
+      { path: "/components/video-player", label: "VideoPlayer", icon: "▶️" },
+      {
+        path: "/components/video-container",
+        label: "VideoContainer",
+        icon: "📺",
+      },
+    ],
+  },
 ];
 
 export const Navigation: React.FC<NavigationProps> = ({
   currentPath,
   onNavigate,
 }) => {
+  const [expandedSections, setExpandedSections] = useState<string[]>([
+    "/design-tokens",
+    "/common-components",
+  ]);
+
+  const toggleSection = (path: string) => {
+    setExpandedSections((prev) =>
+      prev.includes(path) ? prev.filter((p) => p !== path) : [...prev, path]
+    );
+  };
+
+  const isExpanded = (path: string) => expandedSections.includes(path);
+
   return (
     <Nav>
       <Header>
@@ -34,14 +112,45 @@ export const Navigation: React.FC<NavigationProps> = ({
 
       <NavList>
         {navItems.map((item) => (
-          <NavItem
-            key={item.path}
-            $isActive={currentPath === item.path}
-            onClick={() => onNavigate(item.path)}
-          >
-            <NavIcon>{item.icon}</NavIcon>
-            <NavLabel>{item.label}</NavLabel>
-          </NavItem>
+          <NavSection key={item.path}>
+            {item.children ? (
+              <>
+                <NavItem
+                  $isActive={false}
+                  $isParent={true}
+                  onClick={() => toggleSection(item.path)}
+                >
+                  <NavIcon>{item.icon}</NavIcon>
+                  <NavLabel>{item.label}</NavLabel>
+                  <ExpandIcon $isExpanded={isExpanded(item.path)}>▼</ExpandIcon>
+                </NavItem>
+                {isExpanded(item.path) && (
+                  <SubNavList>
+                    {item.children.map((child) => (
+                      <NavItem
+                        key={child.path}
+                        $isActive={currentPath === child.path}
+                        $isParent={false}
+                        onClick={() => onNavigate(child.path)}
+                      >
+                        <NavIcon>{child.icon}</NavIcon>
+                        <NavLabel>{child.label}</NavLabel>
+                      </NavItem>
+                    ))}
+                  </SubNavList>
+                )}
+              </>
+            ) : (
+              <NavItem
+                $isActive={currentPath === item.path}
+                $isParent={false}
+                onClick={() => onNavigate(item.path)}
+              >
+                <NavIcon>{item.icon}</NavIcon>
+                <NavLabel>{item.label}</NavLabel>
+              </NavItem>
+            )}
+          </NavSection>
         ))}
       </NavList>
 
@@ -99,22 +208,48 @@ const NavList = styled.ul`
   padding: ${tokens.spacing.md};
   margin: 0;
   overflow-y: auto;
+
+  /* 스크롤바 스타일링 */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${tokens.colors.gray[700]};
+    border-radius: ${tokens.radii.full};
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: ${tokens.colors.gray[600]};
+  }
 `;
 
-const NavItem = styled.li<{ $isActive: boolean }>`
+const NavSection = styled.div`
+  margin-bottom: ${tokens.spacing.xs};
+`;
+
+const NavItem = styled.li<{ $isActive: boolean; $isParent: boolean }>`
   display: flex;
   align-items: center;
   gap: ${tokens.spacing.sm};
   padding: ${tokens.spacing.sm} ${tokens.spacing.md};
   border-radius: ${tokens.radii.md};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
-  margin-bottom: ${tokens.spacing.xs};
+  transition: ${tokens.interaction.transition.fast};
+  position: relative;
 
   background: ${(props) =>
     props.$isActive ? tokens.colors.primary[500] : "transparent"};
   color: ${(props) =>
     props.$isActive ? tokens.colors.white : tokens.colors.gray[300]};
+  font-weight: ${(props) =>
+    props.$isParent
+      ? tokens.typography.fontWeight.semibold
+      : tokens.typography.fontWeight.regular};
 
   &:hover {
     background: ${(props) =>
@@ -123,13 +258,29 @@ const NavItem = styled.li<{ $isActive: boolean }>`
   }
 `;
 
+const SubNavList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: ${tokens.spacing.xs} 0 ${tokens.spacing.sm} ${tokens.spacing.lg};
+`;
+
 const NavIcon = styled.span`
-  font-size: ${tokens.typography.fontSize.lg};
+  font-size: ${tokens.typography.fontSize.md};
+  flex-shrink: 0;
 `;
 
 const NavLabel = styled.span`
   ${tokens.typographyPresets.bodySmall};
-  font-weight: ${tokens.typography.fontWeight.medium};
+  flex: 1;
+`;
+
+const ExpandIcon = styled.span<{ $isExpanded: boolean }>`
+  font-size: ${tokens.typography.fontSize.xs};
+  transition: transform ${tokens.interaction.duration.fast}ms
+    ${tokens.interaction.easing.easeInOut};
+  transform: ${(props) =>
+    props.$isExpanded ? "rotate(180deg)" : "rotate(-90deg)"};
+  color: ${tokens.colors.gray[400]};
 `;
 
 const Footer = styled.div`

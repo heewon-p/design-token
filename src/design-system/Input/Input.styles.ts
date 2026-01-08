@@ -59,7 +59,7 @@ export const InputWrapper = styled.div<{
   height: ${(props) => sizeStyles[props.$size].height};
   padding: 0 ${(props) => sizeStyles[props.$size].padding.split(" ")[1]};
 
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   ${(props) =>
     props.$disabled &&

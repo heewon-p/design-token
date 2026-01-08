@@ -145,7 +145,7 @@ const RadioContainer = styled.label`
   padding: ${tokens.spacing.sm};
   border-radius: ${tokens.radii.md};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   &:hover {
     background: ${tokens.semanticColors.interactive.hover};
@@ -185,7 +185,7 @@ const ToggleContainer = styled.label`
   padding: ${tokens.spacing.sm};
   border-radius: ${tokens.radii.md};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   &:hover {
     background: ${tokens.semanticColors.interactive.hover};
@@ -237,7 +237,7 @@ const Select = styled.select`
   background: ${tokens.colors.white};
   color: ${tokens.semanticColors.text.primary};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   &:hover {
     border-color: ${tokens.semanticColors.border.strong};

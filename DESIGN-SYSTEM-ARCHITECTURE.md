@@ -24,7 +24,7 @@ src/
 │   ├── colors.ts                   # 컬러 토큰
 │   ├── typography.ts               # 타이포그래피 토큰
 │   ├── spacing.ts                  # 간격 토큰
-│   ├── motion.ts                   # 애니메이션 토큰
+│   ├── interaction.ts                   # 애니메이션 토큰
 │   ├── shadows.ts                  # 그림자 토큰
 │   └── index.ts                    # 통합 export
 │
@@ -72,9 +72,9 @@ src/
 │   │   ├── index.tsx
 │   │   └── TypographyPreview.tsx
 │   │
-│   ├── MotionPlayground/
+│   ├── interactionPlayground/
 │   │   ├── index.tsx
-│   │   └── MotionDemo.tsx
+│   │   └── interactionDemo.tsx
 │   │
 │   └── InputPlayground/
 │       ├── index.tsx

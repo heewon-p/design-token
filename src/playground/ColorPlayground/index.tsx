@@ -254,7 +254,7 @@ const SemanticColorCard = styled.button<{ $isSelected: boolean }>`
         : tokens.semanticColors.border.light};
   border-radius: ${tokens.radii.md};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   &:hover {
     border-color: ${tokens.colors.primary[500]};
@@ -291,7 +291,7 @@ const ScaleCard = styled.button<{ $color: string; $isSelected: boolean }>`
   border-radius: ${tokens.radii.sm};
   cursor: pointer;
   position: relative;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
   box-shadow: ${(props) =>
     props.$isSelected ? tokens.shadows.lg : tokens.shadows.sm};
 
@@ -376,7 +376,7 @@ const StyledButton = styled.button<{
   font-size: ${tokens.typography.fontSize.md};
   font-weight: ${tokens.typography.fontWeight.medium};
   cursor: pointer;
-  transition: ${tokens.motion.transition.fast};
+  transition: ${tokens.interaction.transition.fast};
 
   &:hover {
     transform: translateY(-2px);
