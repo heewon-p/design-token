@@ -66,19 +66,21 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       {/* 메뉴 가이드 */}
       <Section>
         <SectionTitle>🗂️ 메뉴 가이드</SectionTitle>
-        
+
         {/* Design Tokens */}
         <MenuCategory>
           <CategoryTitle>🎨 Design Tokens</CategoryTitle>
           <CategoryDescription>
-            디자인 시스템의 기본 단위인 토큰들을 시각적으로 탐색하고 선택할 수 있습니다.
+            디자인 시스템의 기본 단위인 토큰들을 시각적으로 탐색하고 선택할 수
+            있습니다.
           </CategoryDescription>
           <Features>
             <FeatureCard onClick={() => onNavigate("/tokens/color")}>
               <FeatureIcon>🎨</FeatureIcon>
               <FeatureTitle>Colors</FeatureTitle>
               <FeatureDescription>
-                Primary, Success, Warning, Error 등 Semantic Colors와 Gray Scale 전체 팔레트 확인
+                Primary, Success, Warning, Error 등 Semantic Colors와 Gray Scale
+                전체 팔레트 확인
               </FeatureDescription>
               <FeatureTag>디자인 토큰</FeatureTag>
             </FeatureCard>
@@ -134,7 +136,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <MenuCategory>
           <CategoryTitle>🧩 Common Components</CategoryTitle>
           <CategoryDescription>
-            재사용 가능한 공통 컴포넌트들을 실시간으로 테스트하고 Props를 확인할 수 있습니다.
+            재사용 가능한 공통 컴포넌트들을 실시간으로 테스트하고 Props를 확인할
+            수 있습니다.
           </CategoryDescription>
           <Features>
             <FeatureCard onClick={() => onNavigate("/components/button")}>
@@ -209,7 +212,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <FeatureTag>선택 컴포넌트</FeatureTag>
             </FeatureCard>
 
-            <FeatureCard onClick={() => onNavigate("/components/search-dropdown")}>
+            <FeatureCard
+              onClick={() => onNavigate("/components/search-dropdown")}
+            >
               <FeatureIcon>🔍</FeatureIcon>
               <FeatureTitle>SearchDropdown</FeatureTitle>
               <FeatureDescription>
@@ -326,7 +331,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <FeatureTag>레이아웃 컴포넌트</FeatureTag>
             </FeatureCard>
 
-            <FeatureCard onClick={() => onNavigate("/components/box-select-group")}>
+            <FeatureCard
+              onClick={() => onNavigate("/components/box-select-group")}
+            >
               <FeatureIcon>☐</FeatureIcon>
               <FeatureTitle>BoxSelectGroup</FeatureTitle>
               <FeatureDescription>
@@ -371,7 +378,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <FeatureTag>미디어 컴포넌트</FeatureTag>
             </FeatureCard>
 
-            <FeatureCard onClick={() => onNavigate("/components/video-container")}>
+            <FeatureCard
+              onClick={() => onNavigate("/components/video-container")}
+            >
               <FeatureIcon>📺</FeatureIcon>
               <FeatureTitle>VideoContainer</FeatureTitle>
               <FeatureDescription>
@@ -470,7 +479,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           <AuthorSection>
             <AuthorIcon>👨‍💻</AuthorIcon>
             <AuthorInfo>
-              <AuthorName>Created by Heewon</AuthorName>
+              <AuthorName>Created by 박희원, 황연주</AuthorName>
               <AuthorRole>
                 Frontend Developer & Design System Architect
               </AuthorRole>
@@ -491,7 +500,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 허가를 받아야 합니다.
               </CopyrightDescription>
               <CopyrightNotice>
-                © 2026 Heewon. All rights reserved.
+                © 2026 박희원, 황연주. All rights reserved.
               </CopyrightNotice>
             </CopyrightText>
           </CopyrightSection>
@@ -568,7 +577,7 @@ const SectionTitle = styled.h2`
 
 const MenuCategory = styled.div`
   margin-bottom: ${tokens.spacing["3xl"]};
-  
+
   &:last-child {
     margin-bottom: 0;
   }
